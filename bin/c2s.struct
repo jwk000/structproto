@@ -1,0 +1,18 @@
+//枚举
+enum ePlayerState{
+    offline=0
+    online=1
+    inteam=2
+    ingame=3
+}
+
+struct s2c_player_info{
+    playerid int = 1
+    playername string = 2 //字符串
+    playerstate ePlayerState = 3 //枚举
+}
+
+struct s2c_all_player_info{
+    infos s2c_player_info+ = 1 //数组 结构体
+}
+
