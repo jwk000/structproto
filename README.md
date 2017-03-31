@@ -72,3 +72,26 @@ struct s2c_refresh_stone{
     stones msg_stone+ = 1
 }
 ```
+## 编译运行
+
+本工具使用go语言编写，代码路径为`src/main/*.go`
+可以使用 `go build`直接生成二进制文件
+推荐目录结构如下：
+GOPATH
+    bin/
+        xxx.struct //描述文件
+        CodeGen.exe //生成二进制文件
+    src/
+        main.go
+        coder.go
+        lexer.go
+    testcpp/
+    testcs/
+    
+运行时需要填入的参数：输入描述文件 输出代码路径
+下面是我测试用的启动参数
+```
+CodeGen.exe -i c2s.struct -cpp ../testcpp/testcpp/ -cs ../testcs/testcs/
+```
+
+        
