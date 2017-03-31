@@ -30,17 +30,17 @@
 - uint16元素个数 元素数据
 
 ## TODO
-//  支持属性 "属性1=值1 属性2=值2"
-//  范围检查"min=1 max=100"
-//  默认值"default=0"
-//  对string字段有长度检查"maxstrlen=32"
-//  对repeated字段有数量最少最大检查"mincount=1 maxcount=10"
-//  对枚举字段有值范围检查
-//使用message标记可以用作消息结构体发送，生成协议号，自动调用callback
-//推荐的命名方式：前缀_协议名称
-//使用者直接发送结构体，不需要定义协议号，代码生成协议号
-//协议头、加密在上层做，和协议内容无关
-//生成代码包含函数：MinSize() 返回结构体最小长度用来验证消息大小 MaxSize()同理
+- 支持属性 "属性1=值1 属性2=值2"
+- 范围检查"min=1 max=100"
+- 默认值"default=0"
+- 对string字段有长度检查"maxstrlen=32"
+- 对repeated字段有数量最少最大检查"mincount=1 maxcount=10"
+- 对枚举字段有值范围检查
+- 使用message标记可以用作消息结构体发送，生成协议号，自动调用callback
+- 推荐的命名方式：前缀_协议名称
+- 使用者直接发送结构体，不需要定义协议号，代码生成协议号
+- 协议头、加密在上层做，和协议内容无关
+- 生成代码包含函数：MinSize() 返回结构体最小长度用来验证消息大小 MaxSize()同理
 
 
 
@@ -74,22 +74,22 @@ struct s2c_refresh_stone{
 ```
 ## 编译运行
 
-本工具使用go语言编写，代码路径为`src/main/*.go`
-可以使用 `go build`直接生成二进制文件
-推荐目录结构如下：
+- 本工具使用go语言编写，开发环境为gogland，代码路径为`src/main/*.go` 
+- 使用 `go build`直接生成二进制文件
+- 推荐目录结构如下：
+
+```
 GOPATH
     bin/
-        xxx.struct //描述文件
-        CodeGen.exe //生成二进制文件
+        xxx.struct //描述文件
+        CodeGen.exe //生成二进制文件
     src/
-        main.go
-        coder.go
-        lexer.go
     testcpp/
     testcs/
-    
-运行时需要填入的参数：输入描述文件 输出代码路径
-下面是我测试用的启动参数
+```
+运行时需要填入的参数：输入描述文件 输出代码路径<br>
+下面是我测试用的启动参数<br>
+
 ```
 CodeGen.exe -i c2s.struct -cpp ../testcpp/testcpp/ -cs ../testcs/testcs/
 ```
