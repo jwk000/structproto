@@ -1,31 +1,35 @@
 # structproto
 类似protobuf的二进制兼容的结构体序列化工具，可生成C++、C#代码。
 
-##支持注释 //xxx
-##类似protobuf语法
-需要写一个xxx.struct文件描述结构体
-支持数据类型 int8 int16 int32 int64 uint8 uint16 uint32 uint64 float32 float64 string enum
-支持数组 类型后跟一个+号表示repeated 字段：比如 itemIds int32+ = 1; 表示一个int list.
-支持结构体嵌套
-二进制兼容的约定：和pb一样，数字id不能复用，可以删除，新增
+## 支持注释 //xxx
+## 类似protobuf语法
+- 需要写一个xxx.struct文件描述结构体
 
-##结构体字段的处理规则
+- 支持数据类型 int8 int16 int32 int64 uint8 uint16 uint32 uint64 float32 float64 string enum
 
-1.最外部结构体处理（就是用户描述的那些结构体）
-uint16成员个数n
-(uint16编号 uint8类型 数据) n组
+- 支持数组 类型后跟一个+号表示repeated 字段：比如 itemIds int32+ = 1; 表示一个int list.
 
-2字符串的处理
-不带结尾0，按utf8编码
-uint16长度 字符串内容
+- 支持结构体嵌套
 
-3.内部结构体处理(就是作为数据成员的结构体)
-uint16长度 结构体数据
+- 二进制兼容的约定：和pb一样，数字id不能复用，可以删除，新增
 
-4.数组的处理
-uint16元素个数 元素数据
+## 结构体字段的处理规则
 
-##TODO
+1. 最外部结构体处理（就是用户描述的那些结构体）
+- uint16成员个数n
+- (uint16编号 uint8类型 数据) n组
+
+2. 字符串的处理
+- 不带结尾0，按utf8编码
+- uint16长度 字符串内容
+
+3. 内部结构体处理(就是作为数据成员的结构体)
+- uint16长度 结构体数据
+
+4. 数组的处理
+- uint16元素个数 元素数据
+
+## TODO
 //  支持属性 "属性1=值1 属性2=值2"
 //  范围检查"min=1 max=100"
 //  默认值"default=0"
@@ -40,8 +44,8 @@ uint16元素个数 元素数据
 
 
 
-##下面是测试用的c2s.struct文件，请放在bin/目录下
-```
+## 下面是测试用的c2s.struct文件，请放在bin/目录下
+```c
 enum ePlayerState{
     offline=0
     online=1
